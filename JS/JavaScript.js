@@ -1,4 +1,4 @@
-import { projetos, criarProjeto } from "./projetos.js";
+import { projetos, criarProjeto } from "./Projetos.js";
 import { carregarApoiar } from "./Formulário.js";
 
 // ======================================================
