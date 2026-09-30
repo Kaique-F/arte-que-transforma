@@ -5,7 +5,7 @@
 import {
     salvarDadosDoacao,
     restaurarDadosDoacao
-} from "./storage.js";
+} from "./Storage.js";
 
 
 // ======================================================
