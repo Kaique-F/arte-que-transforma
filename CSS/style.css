@@ -1,0 +1,1457 @@
+:root {
+    --cor-primaria: #0057B8;
+    --cor-primaria-claro: #0474f4;
+    --cor-secundaria: #FFC107;
+    --cor-secundaria-claro: #ffd34ff8;
+    --cor-fundo: #ffffff;
+    --cor-texto: #0a0a0a;
+    --cor-texto-secundaria: #00ffe5;
+    --cor-borda: #1f1e1e;
+
+    --fonte-titulo: 'Trebuchet MS', sans-serif;
+    --fonte-principal: 'Calibri', sans-serif;
+
+    --tamanho-pequeno: 0.875rem;
+    --tamanho-normal: 1rem;
+    --tamanho-subtitulo: 1.25rem;
+    --tamanho-titulo: 1.60rem;
+    --tamanho-principal: 2.25rem;
+
+    --espaco-0: 0px;
+    --espaco-1: 8px;
+    --espaco-2: 16px;
+    --espaco-3: 24px;
+    --espaco-4: 32px;
+    --espaco-5: 40px;
+
+    --altura-header: 80px;
+    --altura-footer: 40px;
+
+
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-fundo: #121212;
+        --cor-texto: #ffffff;
+        --cor-primaria: #4da3ff; 
+        --cor-primaria-claro: #66b3ff;
+        --cor-secundaria: #FFC107;
+        --cor-secundaria-claro: #ffd34f;
+        --cor-texto-secundaria: #ffffff;
+        --cor-borda: #555555;
+    }
+}
+
+
+/* ========================================= */
+/* CONFIGURAÇÃO GERAL */
+/* ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal);
+
+    padding-bottom: var(--altura-footer);
+}
+
+
+/* ========================================= */
+/* CABEÇALHO */
+/* ========================================= */
+
+header {
+    background: linear-gradient(
+        90deg,
+        var(--cor-primaria),
+        var(--cor-texto-secundaria)
+    );
+
+    color: var(--cor-fundo);
+
+    padding: var(--espaco-1);
+
+    text-align: center;
+
+    box-shadow: 0 2px 4px var(--cor-secundaria);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: var(--altura-header);
+
+    z-index: 1000;
+
+    font-family: var(--fonte-titulo);
+}
+
+header h1 {
+    font-size: var(--tamanho-principal);
+    margin: var(--espaco-1);
+}
+
+
+/* ========================================= */
+/* CHECKBOX DO MENU */
+/* ========================================= */
+
+#menu-toggle {
+    display: none;
+}
+
+
+/* ========================================= */
+/* BOTÃO HAMBÚRGUER */
+/* ========================================= */
+
+.menu-hamburguer {
+    display: none;
+
+    position: fixed;
+
+    top: 20px;
+    left: 15px;
+
+    width: 45px;
+    height: 40px;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+
+    color: var(--cor-fundo);
+
+    background-color: var(--cor-primaria);
+
+    cursor: pointer;
+
+    border-radius: var(--espaco-1);
+
+    z-index: 1100;
+
+    transition: 0.3s;
+}
+
+.menu-hamburguer:hover {
+    background-color: var(--cor-primaria-claro);
+}
+
+
+/* ========================================= */
+/* MENU PRINCIPAL - DESKTOP */
+/* ========================================= */
+
+.menu {
+    position: fixed;
+
+    top: var(--altura-header);
+    left: 0;
+
+    width: 100%;
+
+    background-color: var(--cor-primaria);
+
+    z-index: 900;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateX(0);
+
+    transition: transform 0.3s ease;
+}
+
+
+/* LISTA PRINCIPAL */
+
+.menu-principal {
+    list-style: none;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: var(--espaco-1);
+}
+
+
+/* ITENS DO MENU */
+
+.menu-principal > li {
+    position: relative;
+}
+
+
+/* LINKS */
+
+.menu a {
+    display: block;
+
+    padding: 15px 20px;
+
+    color: var(--cor-fundo);
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+
+/* EFEITO DOS LINKS */
+
+.menu a:hover {
+    background-color: var(--cor-primaria-claro);
+}
+
+
+/* ========================================= */
+/* SUBMENU / DROPDOWN */
+/* ========================================= */
+
+.submenu ul {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+
+    min-width: 180px;
+
+    list-style: none;
+
+    background-color: #003d80;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* SUBMENU APARECE AO PASSAR O MOUSE */
+
+.submenu:hover > ul {
+    display: block;
+}
+
+
+/* LINKS DO SUBMENU */
+
+.submenu ul a {
+    padding: 12px 15px;
+
+    white-space: nowrap;
+}
+
+
+/* ========================================= */
+/* CONTEÚDO */
+/* ========================================= */
+
+main {
+    display: grid;
+
+    grid-template-columns: repeat(12, 1fr);
+
+    padding: 160px 40px 40px;
+}
+
+#conteudo {
+    grid-column: 3/11;
+}
+
+article {
+    grid-column: 3 / 11;
+
+    padding: var(--espaco-3);
+
+    background-color: var(--cor-fundo);
+
+    color: var(--cor-texto);
+
+    font-family: var(--fonte-principal);
+}
+
+article img {
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    margin: var(--espaco-2) auto;
+}
+
+
+/* ========================================= */
+/* TÍTULOS */
+/* ========================================= */
+
+h2 {
+    font-size: var(--tamanho-titulo);
+
+    color: var(--cor-primaria);
+
+    margin-bottom: var(--espaco-2);
+}
+
+
+/* ========================================= */
+/* RODAPÉ */
+/* ========================================= */
+
+footer {
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: var(--altura-footer);
+
+    background-color: var(--cor-borda);
+
+    color: var(--cor-fundo);
+
+    text-align: center;
+
+    padding: var(--espaco-1);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+
+    font-size: var(--tamanho-pequeno);
+}
+
+
+/* ========================================= */
+/* 1200PX */
+/* ========================================= */
+
+@media (max-width: 1200px) {
+
+    main {
+        padding: 160px 32px 40px;
+    }
+
+    article {
+        grid-column: 2 / 12;
+    }
+}
+
+
+/* ========================================= */
+/* 992PX */
+/* ========================================= */
+
+@media (max-width: 992px) {
+
+    .menu a {
+        padding: 14px 16px;
+    }
+
+    article {
+        grid-column: 1 / 13;
+    }
+}
+
+
+/* ========================================= */
+/* 768PX - MOBILE */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    header {
+        height: 70px;
+    }
+
+    header h1 {
+        font-size: var(--tamanho-titulo);
+
+        margin-left: 50px;
+    }
+
+
+    /* MOSTRA O HAMBÚRGUER */
+
+    .menu-hamburguer {
+        display: flex;
+
+        top: 15px;
+        left: 10px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 23px;
+    }
+
+
+    /* ESCONDE O MENU */
+
+    .menu {
+        top: 70px;
+
+        bottom: var(--altura-footer);
+
+        width: 220px;
+        height: auto;
+
+        display: block;
+
+        transform: translateX(-100%);
+
+        overflow-y: auto;
+    }
+
+
+    /* ABRE O MENU */
+
+    #menu-toggle:checked ~ .menu {
+        transform: translateX(0);
+    }
+
+
+    /* MENU VERTICAL */
+
+    .menu-principal {
+        display: block;
+
+        width: 100%;
+    }
+
+    .menu-principal > li {
+        width: 100%;
+    }
+
+    .menu a {
+        padding: 15px;
+    }
+
+
+    /* SUBMENU */
+
+    .submenu ul {
+        position: static;
+
+        width: 100%;
+
+        box-shadow: none;
+    }
+
+
+    /* DROPDOWN NO MOBILE */
+
+    .submenu:hover > ul {
+        display: block;
+    }
+
+
+    main {
+        padding: 100px 16px 40px;
+    }
+
+    article {
+        grid-column: 1 / 13;
+
+        padding: var(--espaco-2);
+    }
+
+    footer {
+        height: var(--altura-footer);
+
+        padding: 6px;
+
+        font-size: var(--tamanho-pequeno);
+    }
+}
+
+
+/* ========================================= */
+/* 576PX */
+/* ========================================= */
+
+@media (max-width: 576px) {
+
+    header {
+        height: 60px;
+    }
+
+    header h1 {
+        font-size: var(--tamanho-subtitulo);
+
+        margin-left: 45px;
+    }
+
+
+    .menu {
+        top: 60px;
+
+        bottom: var(--altura-footer);
+
+        width: 200px;
+    }
+
+
+    .menu-hamburguer {
+        top: 10px;
+        left: 8px;
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 21px;
+    }
+
+
+    main {
+        padding: 85px 16px 40px;
+    }
+
+    article {
+        padding: var(--espaco-2);
+    }
+
+
+    footer {
+        height: 32px;
+
+        padding: 4px;
+
+        font-size: 0.75rem;
+    }
+}
+
+
+/* ========================================= */
+/* 400PX */
+/* ========================================= */
+
+@media (max-width: 400px) {
+
+    header {
+        height: 55px;
+    }
+
+    header h1 {
+        font-size: var(--tamanho-normal);
+
+        margin-left: 40px;
+    }
+
+
+    .menu {
+        top: 55px;
+
+        bottom: 28px;
+
+        width: 190px;
+    }
+
+
+    .menu-hamburguer {
+        top: 8px;
+        left: 5px;
+
+        width: 35px;
+        height: 35px;
+
+        font-size: 19px;
+    }
+
+
+    main {
+        padding: 75px 8px 40px;
+    }
+
+    article {
+        padding: var(--espaco-1);
+    }
+
+
+    footer {
+        height: 28px;
+
+        padding: 3px;
+
+        font-size: 0.7rem;
+    }
+}
+
+/* ========================================= */
+/* FORMULÁRIO DE DOAÇÃO */
+/* ========================================= */
+
+form {
+    width: 100%;
+}
+
+
+/* ========================================= */
+/* CAMPOS DO FORMULÁRIO */
+/* ========================================= */
+
+fieldset {
+    border: 2px solid var(--cor-primaria);
+    border-radius: var(--espaco-1);
+    padding: var(--espaco-3);
+    margin-bottom: var(--espaco-3);
+    background-color: #ffffff;
+}
+
+legend {
+    padding: 0 var(--espaco-1);
+    color: var(--cor-primaria);
+    font-family: var(--fonte-titulo);
+    font-size: var(--tamanho-subtitulo);
+    font-weight: bold;
+}
+
+
+/* ORGANIZAÇÃO DOS CAMPOS */
+
+.caixa-doacao {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--espaco-2);
+}
+
+
+/* LABELS */
+
+.caixa-doacao label,
+fieldset > label {
+    margin-bottom: var(--espaco-1);
+    font-weight: bold;
+    color: var(--cor-texto);
+}
+
+
+/* INPUTS E SELECT */
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--cor-borda);
+    border-radius: var(--espaco-1);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-principal);
+    font-size: var(--tamanho-normal);
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background-color 0.3s ease;
+}
+
+
+/* ========================================= */
+/* ESTADO FOCUS */
+/* ========================================= */
+
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: var(--cor-primaria);
+
+    box-shadow: 0 0 0 3px var(--cor-secundaria-claro);
+
+    background-color: #ffffff;
+}
+
+
+/* ========================================= */
+/* ESTADO VÁLIDO */
+/* ========================================= */
+
+input:valid,
+select:valid {
+    border-color: #28a745;
+}
+
+
+/* ========================================= */
+/* ESTADO INVÁLIDO */
+/* ========================================= */
+
+input:invalid:not(:placeholder-shown),
+select:invalid {
+    border-color: #dc3545;
+}
+
+
+/* ========================================= */
+/* PLACEHOLDER */
+/* ========================================= */
+
+input::placeholder {
+    color: #666666;
+}
+
+
+/* ========================================= */
+/* LINK DOS TERMOS */
+/* ========================================= */
+
+form a {
+    color: var(--cor-primaria);
+    font-weight: bold;
+    text-decoration: underline;
+
+    transition:
+        color 0.3s ease,
+        text-shadow 0.3s ease;
+}
+
+form a:hover {
+    color: var(--cor-primaria-claro);
+}
+
+form a:focus {
+    outline: 2px solid var(--cor-secundaria);
+    outline-offset: 3px;
+}
+
+
+/* ========================================= */
+/* BOTÃO CONFIRMAR DOAÇÃO */
+/* ========================================= */
+
+button {
+    padding: 12px 24px;
+
+    border: 2px solid var(--cor-primaria);
+
+    border-radius: var(--espaco-1);
+
+    background-color: var(--cor-primaria);
+
+    color: var(--cor-fundo);
+
+    font-family: var(--fonte-principal);
+
+    font-size: var(--tamanho-normal);
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.1s ease;
+}
+
+
+/* ========================================= */
+/* BOTÃO - HOVER */
+/* ========================================= */
+
+button:hover {
+    background-color: var(--cor-primaria-claro);
+
+    border-color: var(--cor-primaria-claro);
+
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ========================================= */
+/* BOTÃO - FOCUS */
+/* ========================================= */
+
+button:focus {
+    outline: 2px solid var(--cor-secundaria);
+
+    outline-offset: 3px;
+}
+
+
+/* ========================================= */
+/* BOTÃO - ACTIVE */
+/* ========================================= */
+
+button:active {
+    transform: scale(0.97);
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ========================================= */
+/* BOTÃO - DISABLED */
+/* ========================================= */
+
+button:disabled {
+    background-color: #999999;
+
+    border-color: #999999;
+
+    color: #eeeeee;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    opacity: 0.7;
+}
+
+
+/* ========================================= */
+/* RESPONSIVIDADE DO FORMULÁRIO */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    fieldset {
+        padding: var(--espaco-2);
+    }
+
+    legend {
+        font-size: var(--tamanho-normal);
+    }
+
+    input,
+    select {
+        padding: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    fieldset {
+        padding: var(--espaco-2);
+        margin-bottom: var(--espaco-2);
+    }
+
+    .caixa-doacao {
+        margin-bottom: var(--espaco-2);
+    }
+
+    button {
+        padding: 11px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    fieldset {
+        padding: var(--espaco-1);
+    }
+
+    input,
+    select {
+        padding: 9px;
+        font-size: var(--tamanho-pequeno);
+    }
+
+    button {
+        font-size: var(--tamanho-pequeno);
+    }
+}
+
+/* ========================================= */
+/* PÁGINA DE PROJETOS */
+/* ========================================= */
+
+/* TABELA DE PROJETOS */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--espaco-3);
+    margin-bottom: var(--espaco-4);
+}
+
+th,
+td {
+    border: 2px solid var(--cor-borda);
+    padding: var(--espaco-2);
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+    font-family: var(--fonte-titulo);
+    font-size: var(--tamanho-normal);
+}
+
+td {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-size: var(--tamanho-normal);
+}
+
+td img {
+    width: 100%;
+    max-width: 300px;
+    height: 180px;
+    object-fit: cover;
+    margin: 0 auto;
+    border-radius: var(--espaco-1);
+}
+
+/* EFEITO NAS LINHAS DA TABELA */
+
+tr {
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+tr:hover td {
+    background-color: #f5f5f5;
+}
+
+/* ========================================= */
+/* ÁREA DE DOAÇÃO */
+/* ========================================= */
+
+.caixa-doacao {
+    margin-top: var(--espaco-4);
+    padding: var(--espaco-3);
+    border: 2px solid var(--cor-primaria);
+    border-radius: var(--espaco-1);
+    background-color: var(--cor-fundo);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.caixa-doacao h2 {
+    margin-bottom: var(--espaco-2);
+}
+
+/* BOTÕES DE VALORES */
+
+.amounts {
+    display: flex;
+    gap: var(--espaco-2);
+    margin-bottom: var(--espaco-3);
+    flex-wrap: wrap;
+}
+
+.amounts button {
+    min-width: 100px;
+}
+
+/* BOTÃO ATIVO */
+
+.amounts button.active {
+    background-color: var(--cor-secundaria);
+    border-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+}
+
+/* HOVER DOS BOTÕES DE VALOR */
+
+.amounts button:hover {
+    background-color: var(--cor-primaria-claro);
+    border-color: var(--cor-primaria-claro);
+    color: var(--cor-fundo);
+}
+
+/* CAMPO DE OUTRO VALOR */
+
+.caixa-doacao > label {
+    display: block;
+    margin-bottom: var(--espaco-1);
+    font-weight: bold;
+}
+
+.custom-amount {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: var(--espaco-2);
+}
+
+/* BOTÃO APOIAR */
+
+.caixa-doacao p {
+    margin-top: var(--espaco-2);
+}
+
+.caixa-doacao p a {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+    border-radius: var(--espaco-1);
+    color: var(--cor-fundo);
+    font-weight: bold;
+    text-decoration: none;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.1s ease;
+}
+
+.caixa-doacao p a:hover {
+    background-color: var(--cor-primaria-claro);
+    border-color: var(--cor-primaria-claro);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.caixa-doacao p a:focus {
+    outline: 2px solid var(--cor-secundaria);
+    outline-offset: 3px;
+}
+
+.caixa-doacao p a:active {
+    transform: scale(0.97);
+}
+
+/* ========================================= */
+/* RESPONSIVIDADE */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    table {
+        font-size: var(--tamanho-pequeno);
+    }
+
+    th,
+    td {
+        padding: var(--espaco-1);
+    }
+
+    td img {
+        max-width: 220px;
+        height: 140px;
+    }
+
+    .caixa-doacao {
+        padding: var(--espaco-2);
+    }
+
+    .amounts {
+        flex-direction: column;
+        gap: var(--espaco-1);
+    }
+
+    .amounts button {
+        width: 100%;
+    }
+
+    .custom-amount {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: normal;
+    }
+
+    th,
+    td {
+        min-width: 140px;
+        padding: var(--espaco-1);
+    }
+
+    td img {
+        max-width: 150px;
+        height: 100px;
+    }
+
+    .caixa-doacao {
+        padding: var(--espaco-2);
+        margin-top: var(--espaco-3);
+    }
+
+    .caixa-doacao p a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+
+    th,
+    td {
+        font-size: var(--tamanho-pequeno);
+    }
+
+    td img {
+        max-width: 120px;
+        height: 80px;
+    }
+
+    .caixa-doacao {
+        padding: var(--espaco-1);
+    }
+
+    .amounts button {
+        padding: 10px;
+    }
+}
+
+/* ========================================= */
+/* COMPONENTES DE FEEDBACK */
+/* ========================================= */
+
+
+/* ========================================= */
+/* BADGE */
+/* ========================================= */
+
+.badge {
+    display: inline-block;
+    margin-top: var(--espaco-1);
+    padding: 5px 10px;
+
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 20px;
+
+    font-size: var(--tamanho-pequeno);
+    font-weight: bold;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+.badge:hover {
+    background-color: var(--cor-secundaria-claro);
+    transform: scale(1.05);
+}
+
+
+/* ========================================= */
+/* ALERTAS */
+/* ========================================= */
+
+.alert {
+    width: 100%;
+    margin-bottom: var(--espaco-3);
+    padding: var(--espaco-2);
+
+    border-left: 5px solid;
+    border-radius: var(--espaco-1);
+
+    font-size: var(--tamanho-normal);
+}
+
+
+/* ALERTA INFORMATIVO */
+
+.alert-info {
+    background-color: #e8f2ff;
+    border-color: var(--cor-primaria);
+    color: var(--cor-texto);
+}
+
+
+/* ALERTA DE ATENÇÃO */
+
+.alert-atencao {
+    background-color: #fff8dc;
+    border-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+
+    margin-top: var(--espaco-2);
+}
+
+
+/* ALERTA DE SUCESSO */
+
+.alert-sucesso {
+    background-color: #e8f7ed;
+    border-color: #28a745;
+    color: #155724;
+}
+
+
+/* ALERTA DE ERRO */
+
+.alert-erro {
+    background-color: #fdeaea;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+
+/* ========================================= */
+/* TOAST */
+/* ========================================= */
+
+.toast-toggle {
+    display: none;
+}
+
+.toast {
+    position: fixed;
+
+    right: 20px;
+    bottom: 60px;
+
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+
+    min-width: 300px;
+    max-width: 400px;
+
+    padding: var(--espaco-2);
+
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+
+    border-left: 5px solid #28a745;
+    border-radius: var(--espaco-1);
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+    z-index: 2000;
+
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+}
+
+
+/* ÍCONE DO TOAST */
+
+.toast-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    background-color: #28a745;
+    color: var(--cor-fundo);
+
+    font-weight: bold;
+}
+
+
+/* TEXTO DO TOAST */
+
+.toast strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.toast p {
+    margin: 0;
+    font-size: var(--tamanho-pequeno);
+}
+
+
+/* BOTÃO DE FECHAR */
+
+.toast label {
+    margin-left: auto;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    color: var(--cor-borda);
+
+    cursor: pointer;
+}
+
+.toast label:hover {
+    color: var(--cor-primaria);
+}
+
+
+/* EXIBIR TOAST */
+
+#toast-toggle:checked ~ .toast {
+    transform: translateX(0);
+}
+
+
+/* ========================================= */
+/* RESPONSIVIDADE DOS COMPONENTES */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+    .alert {
+        padding: var(--espaco-2);
+        font-size: var(--tamanho-pequeno);
+    }
+
+    .toast {
+        left: 16px;
+        right: 16px;
+
+        min-width: auto;
+        max-width: none;
+
+        bottom: 50px;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+
+    .toast {
+        bottom: 40px;
+        padding: var(--espaco-1);
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .alert {
+        padding: var(--espaco-1);
+    }
+
+    .toast {
+        left: 8px;
+        right: 8px;
+        bottom: 36px;
+    }
+
+    .toast strong {
+        font-size: var(--tamanho-pequeno);
+    }
+
+}
+
+/* TOAST */
+
+.toast-toggle {
+    display: none;
+}
+
+.botao-toast {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 16px 0;
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+    border: 2px solid var(--cor-primaria);
+    border-radius: var(--espaco-1);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botao-toast:hover {
+    background-color: var(--cor-primaria-claro);
+    border-color: var(--cor-primaria-claro);
+}
+
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 60px;
+
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-2);
+
+    min-width: 300px;
+    padding: var(--espaco-2);
+
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+
+    border-left: 5px solid #28a745;
+    border-radius: var(--espaco-1);
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+    z-index: 2000;
+
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+}
+
+.toast-icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    background-color: #28a745;
+    color: white;
+
+    font-weight: bold;
+}
+
+.toast strong {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.toast p {
+    margin: 0;
+    font-size: var(--tamanho-pequeno);
+}
+
+.fechar-toast {
+    margin-left: auto;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.fechar-toast:hover {
+    color: var(--cor-primaria);
+}
+
+/* MOSTRA O TOAST */
+
+#toast-toggle:checked ~ .toast {
+    transform: translateX(0);
+}

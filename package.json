@@ -1,0 +1,21 @@
+{
+    "name": "arte-que-transforma",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+
+
+"scripts": {
+    "dev": "vite --config viteconfig.js",
+    "build": "vite build --config viteconfig.js",
+    "preview": "vite preview --config viteconfig.js"
+},
+
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "devDependencies": {
+        "vite": "^8.3.1"
+    }
+}
